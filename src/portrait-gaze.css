@@ -1,0 +1,6 @@
+.portrait-gaze-overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;z-index:1;pointer-events:none;opacity:0}
+.portrait-interactive-image[data-gaze-rendering="true"]>.portrait-gaze-overlay{opacity:1}
+.portrait-interactive-image[data-gaze-rendering="true"]>img{opacity:0}
+.portrait-draggable .portrait-image::after{z-index:2;pointer-events:none}
+.portrait-draggable .portrait-corner,.portrait-draggable .portrait-label,.portrait-draggable .portrait-drag-hint{z-index:3}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.portrait-gaze-overlay{display:none}.portrait-interactive-image[data-gaze-rendering="true"]>img{opacity:1}}

@@ -1,0 +1,12 @@
+/* The old viewport gradient repainted every time inherited pointer coordinates
+   changed. A bounded, static texture now moves on its own composite layer. */
+body::after{display:none}
+.pointer-light{position:fixed;left:0;top:0;z-index:30;width:720px;height:720px;pointer-events:none;opacity:0;transform:translate3d(-1000px,-1000px,0);background:radial-gradient(360px circle at center,#e4ab8220,transparent 72%);mix-blend-mode:screen;transition:opacity .35s ease;contain:strict}
+.pointer-light[data-visible="true"]{opacity:1;will-change:transform}
+.pointer-aura{position:fixed;left:0;top:0;z-index:100;width:27px;height:27px;border:1px solid #e9c8aa72;border-radius:50%;pointer-events:none;opacity:0;transform:translate3d(-100px,-100px,0);transition:opacity .2s,width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1),background .35s,border-color .35s;display:grid;place-items:center}
+.pointer-aura>span{width:3px;height:3px;background:#f2d1b5;border-radius:50%;opacity:.6;transition:opacity .3s}
+.pointer-aura[data-visible="true"]{opacity:1;will-change:transform}
+.pointer-aura[data-interactive="true"]{width:49px;height:49px;background:#e9c8aa0e;border-color:#e9c8aaa1}
+.pointer-aura[data-interactive="true"]>span{opacity:0}
+.pointer-aura[data-suppressed="true"]{opacity:0}
+@media(hover:none),(pointer:coarse),(prefers-reduced-motion:reduce){.pointer-aura,.pointer-light{display:none}}
